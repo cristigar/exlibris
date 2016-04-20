@@ -1,5 +1,5 @@
 # Ignore the log files
-logs
+logs/*
 
 # Ignore the SASS Chache
 /public/.sass-cache
