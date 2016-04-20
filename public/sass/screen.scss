@@ -1,0 +1,446 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "compass/css3/border-radius";
+@import "compass/css3/flexbox";
+@import "_h5bp";
+
+// Page
+$page-bg-color: rgb(252, 250, 235);
+$page-text-color: rgb(34, 34, 34);
+$font-stack: "Noto Sans", sans-serif;
+$secondary-font: "Noto Serif", serif;
+
+// Main menu
+$main-menu-border: 1px solid rgb(190, 190, 190);
+$main-menu-bg-color: rgb(250, 250, 250);
+$main-menu-bg-hover-color: rgba(0, 0, 0, .01);
+$main-menu-shadow: 0 0 10px 2px rgb(221, 221, 221);
+
+// Page menu
+$pg-menu-bg-color: rgb(190, 190, 190);
+$pg-menu-text-color: rgb(70, 70, 70);
+$pg-menu-text-hover-color: rgb(30, 30, 30);
+
+// Footer
+$footer-bg-color: $page-text-color;
+$footer-text-color: $page-bg-color;
+
+// Accent
+$accent-color1: rgb(76, 27, 27);
+$accent-color2: rgb(185, 18, 27);
+$inset-shadow: inset 0 0 1em rgba(70, 70, 70, .5);
+$btn-shadow: 0 0 10px 2px rgb(221, 221, 221);
+$generic-transition: all .075s ease-in-out;
+
+*,
+*:after,
+*:before {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+// Buttons
+.btn {
+	color: rgb(255, 255, 255);
+	background: rgb(100, 100, 100);
+	font-weight: 700;
+	cursor: pointer;
+	transition: $generic-transition;
+	
+	&:hover {
+		box-shadow: $btn-shadow;
+	}
+
+	&:active {
+		box-shadow: $inset-shadow;
+	}
+}
+
+.delete,
+.delete:hover {
+	@extend .btn;
+	background: rgb(192, 57, 43);
+}
+
+.edit,
+.edit:hover {
+	@extend .btn;
+	background: rgb(39, 174, 96);
+}
+
+// Data
+.no-record {
+	color: $accent-color2;
+	font-style: italic;
+}
+
+.no-data {
+	font-style: italic;
+}
+
+.invalid-data {
+	color: $accent-color2;
+}
+
+// Main styles
+html,
+body {
+	width: 100%;
+	min-height: 100vh;
+}
+
+input,
+button {
+	font: 400 1em/1.4 $font-stack;
+}
+
+html {
+	color: $page-text-color;
+	background: $page-bg-color;
+	@extend input;
+}
+
+
+body {
+
+	@include display-flex;
+	@include flex-direction(column);
+	@include align-items(center);
+
+	a {
+		color: $accent-color1;
+		text-decoration: none;
+		transition: $generic-transition;
+		border-bottom: 1px dotted $accent-color1;
+
+		&:hover { color: $accent-color2; }
+	}
+
+}
+
+.content-container {
+	margin: 1em 0 auto;
+	@include display-flex;
+	@include flex-direction(column);
+	width: 100%;
+
+	form {
+		text-align: center;
+	}
+
+	& > *:not(:last-child) {
+		margin-bottom: 2em;
+	}
+}
+
+#mainNav {
+	background: $main-menu-bg-color;
+	border: $main-menu-border;
+	box-shadow: $main-menu-shadow;
+	margin-bottom: 2em;
+
+	ul {
+		@include display-flex;
+		@include flex-direction(column);
+	}
+
+	a {
+		text-align: center;
+		display: block;
+		padding: 1em;
+		font-weight: 700;
+		text-decoration: none;
+		border-bottom: none;
+
+		&:hover {
+			background: $main-menu-bg-hover-color;
+		}
+	}
+
+}
+
+#logo a {
+	background: $accent-color2;
+	color: $main-menu-bg-color;
+	font: 700 1.8em/1 $secondary-font;
+
+	&:hover { background: $accent-color2; }
+}
+
+form input:not([type=submit]) {
+	border: $main-menu-border;
+	padding: .4em;
+	outline: none;
+	transition: $generic-transition;
+
+	&:focus {
+		border-color: $accent-color1;
+		box-shadow: $main-menu-shadow;
+	}
+}
+
+#searchInput {
+	@extend input;
+	width: 80%;
+
+	& + i {
+		transform: translateX(-2em);
+	}
+}
+
+#pageNav {
+	background: $pg-menu-bg-color;
+
+	ul {
+		@include display-flex;
+		@include flex-direction(column);
+	
+	}
+
+	li {		
+		a {
+			display: block;
+			text-align: center;
+			font-weight: 700;
+			line-height: 3;
+			color: $pg-menu-text-color;
+			text-decoration: none;
+			border-bottom: none;
+
+			&:hover {
+				color: white;
+				background: $pg-menu-text-color;
+			}
+		}
+	}
+}
+
+#pageFooter {
+	@include align-self(stretch);
+	background: $footer-bg-color;
+	color: $footer-text-color;
+	padding: 1em 0;
+	margin-top: 2em;
+	text-align: center;
+
+	a {
+		color: $footer-text-color;
+		font-weight: 700;
+		border: none;
+
+		&:hover {
+			color: $accent-color2;
+		}
+	}
+}
+
+main {
+	margin-bottom: auto;
+	padding: 0 5px;
+	@include display-flex;
+	@include flex-direction(column);
+
+	& > h1 {
+		font: 700 2em/1.2 $secondary-font;
+		margin-bottom: .5em;
+	}
+
+	/**
+	 * Targeting pages with lists: authors, langs, publishers and localities
+	 */
+	& > ul {
+		list-style: decimal;
+		padding-left: 2em;
+
+		li {
+			padding: .4em 0;
+		}
+	}
+
+	& > form {
+		@include display-flex;
+		@include flex-direction(column);
+
+		div {
+			@include display-flex;
+			@include flex-direction(column);
+			@include align-items(stretch);
+		}
+
+		label {
+			text-align: left;
+			margin-top: .4em;
+		}
+
+		input:not([type=submit]) {
+			width: 100%;
+		}
+
+	}
+}
+
+#submit {
+	@extend .btn;
+	margin: 1em 0 0 auto;
+	padding: .6em 1.2em;
+	background: $accent-color1;
+	border: 1px solid $accent-color1;
+
+	&:active {
+		background: $accent-color2;
+	}
+	
+}
+
+.book {
+	padding: 2em 0;
+
+	&:not(:last-child) {
+		border-bottom: 1px dashed $accent-color1;
+	}
+
+	.title {
+		font: 700 1.6em/1.2 $secondary-font;
+		margin-bottom: .2em;
+	}
+
+	a {
+		border-bottom: 1px dotted $accent-color1;
+	}
+}
+
+.book-info {
+	margin-top: 1em;
+
+	& > div {
+		padding: .1em 0;
+	}
+}
+
+.book-actions {
+	padding-top: 1em;
+	@include display-flex;
+	@include justify-content(flex-end);
+
+	a {
+		display: block;
+		padding: .4em .8em;
+		border: 0;
+
+		&:not(:last-child) {
+			margin-right: .5em;
+		}
+	}
+}
+
+/***==============================================
+	Media screen > 40em
+    ==========================================***/
+@media only screen and (min-width: 40em) {
+	#mainNav {
+		ul {
+			@include flex-direction(row);
+			@include align-items(stretch);
+		}
+
+		li {
+			@include display-flex;
+			@include align-items(stretch);
+			&:nth-child(2) {
+				@include flex-grow(1);
+			}
+		}
+
+		a {
+			@include display-flex;
+			@include align-items(center);
+			@include justify-content(flex-end);
+			@include flex-grow(1);
+		}
+	}
+
+	#pageNav {
+		ul {
+			@include flex-flow(row wrap);
+		}
+		li {
+			@include flex-direction(row);
+			@include flex(1);
+			
+			a {
+				@include flex(1);
+			}
+		}
+	}
+	
+	main {
+		padding: 0 1em;
+		form {
+			@include flex-flow(row wrap);
+			div {
+				@include flex-direction(row);
+				@include justify-content(space-between);
+				@include align-items(center);
+				width: 100%;
+				margin-top: .8em;
+			}
+
+			input[type=text] {
+				@include flex-basis(80%);
+			}
+
+			input[type=number] {
+				@include flex-basis(40%);
+			}
+		}
+	}
+
+	.book-info {
+		@include display-flex;
+		@include flex-wrap(wrap);
+
+		& > div {
+			@include flex-basis(50%);
+		}
+	}
+	
+}
+
+/***==============================================
+	Media screen > 60em
+    ==========================================***/
+@media only screen and (min-width: 60em) {
+	.content-container {
+		@include flex-flow(row wrap);
+		max-width: 70em;
+
+		header {
+			@include flex-basis(100%);
+		}
+	}
+
+	#pageNav {
+		@include flex-basis(25%);
+		@include align-self(flex-start);
+
+		ul li {
+			@include flex-basis(100%);
+		}
+	}
+
+	main {
+		@include flex-basis(75%);
+		padding-left: 2em;
+	}
+
+	#logo {
+		@include flex-basis(25%);
+		a {
+			@include justify-content(center);
+		}
+	}
+}

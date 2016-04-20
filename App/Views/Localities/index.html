@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Localități{% endblock %}
+
+{% block body %}
+
+	<h1>Localități</h1>
+
+	<ul>
+		
+		{% for locality in localities %}
+		<li>
+			<p>
+				<a href="in/{{ locality.id }}" title="Dați clic pentru a vedea cărțile editate în „{{ locality.name }}”">
+					{% if locality.name %}
+						{{ locality.name }}
+					{% else %}
+						<span class="no-record">(lipsește)</span>
+					{% endif %}
+				</a>
+				- {{ locality.cnt }}</p>
+		</li>
+
+		{% endfor %}
+
+	</ul>
+	
+{% endblock %}

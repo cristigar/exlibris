@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Autori{% endblock %}
+
+{% block body %}
+
+	<h1>Autori</h1>
+
+	<ul>
+		
+		{% for author in authors %}
+		<li>
+			<p>
+				<a href="by/{{ author.id }}" title="Dați clic pentru a vedea cărțile cu autorul „{{ author.name }}”">{{ author.name }}</a>
+				- {{ author.cnt }}
+			</p>
+		</li>
+
+		{% endfor %}
+
+	</ul>
+	
+{% endblock %}

@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% block title %}Cărți{% endblock %}
+
+{% block body %}
+
+	<h1>{{ data['title'] }}</h1>
+	<div class="quantity">cărți găsite: {{ data['books'] | length }}</div>
+	<div class="books-container">
+		{% if data['books'] is empty %}
+			<p class="no-data">(nimic de afișat)</p>
+		{% else %}
+			{% for book in data['books'] %}
+				<section class="book">
+					<h1 class="title" title="Titlul cărții este „{{ book.title }}”">{{ book.title }}</h1>
+					<p class="author">
+						de
+						<a href="/books/search?{{ {'q': book.author, 'acc': '1'} | url_encode }}" title="Autorul este {{ book.author }} | Dați clic pentru a căuta „{{ book.author }}”">{{ book.author }}</a>
+					</p>
+					<div class="book-info">
+						<div class="pub-year">
+							Anul:
+							{% if book.pub_year %}
+								<a href="/books/search?{{ {'q': book.pub_year, 'acc': '1'} | url_encode }}" title="Anul editării este {{ book.pub_year }} | Dați clic pentru a căuta „{{ book.pub_year }}”">{{ book.pub_year }}</a>
+							{% else %}
+								<span class="no-record">(lipsă)</span>
+							{% endif %}
+						</div>
+						<div class="num-of-pages">
+							Numărul de pagini:
+							{{ book.num_of_pages }}
+						</div>
+						<div class="publisher">
+							Editura:
+							{% if book.publisher == "" %}
+								<span class="no-record">(lipsă)</span>
+							{% else %}
+								<a href="/books/search?{{ {'q': book.publisher, 'acc': '1'} | url_encode }}" title="Editura este {{ book.publisher }} | Dați clic pentru a căuta „{{ book.publisher }}”">{{ book.publisher }}</a>
+							{% endif %}
+						</div>
+						<div class="lang">
+							Limba:
+							<a href="/books/search?{{ {'q': book.lang, 'acc': '1'} | url_encode }}" title="Limba este {{ book.lang }} | Dați clic pentru a căuta „{{ book.lang }}”">{{ book.lang | capitalize }}</a>
+						</div>
+						<div class="locality">
+							Localitatea:
+							{% if book.locality == "" %}
+								<span class="no-record">(lipsă)</span>
+							{% else %}
+								<a href="/books/search?{{ {'q': book.locality, 'acc': '1'} | url_encode }}" title="Localitate unde a fost editată cartea este {{ book.locality }} | Dați clic pentru a căuta „{{ book.locality }}”">{{ book.locality }}</a>
+							{% endif %}
+						</div>
+						<div class="isbn">
+							ISBN:
+							{% if book.isbn == "" %}
+								<span class="no-record">(lipsă)</span>
+							{% else %}
+								{{ book.isbn }}
+							{% endif %}
+						</div>
+					</div>
+					<div class="book-actions">
+						<a class="btn edit" href="/admin/books/edit/{{ book.id }}" title="Editare">Editare</a>
+						<a class="btn delete" href="/admin/books/delete/{{ book.id }}" title="Ștergere">Ștergere</a>
+					</div>
+				</section>
+			{% endfor %}
+		{% endif %}
+
+	</div>
+
+
+
+{# 
+		{% if data['books'] is empty %}
+			<p>Nimic de afișat</p>
+		{% else %}
+			<table>
+				<tr>
+					<th>Titlu</th>
+					<th>Autor</th>
+					<th>An editare</th>
+					<th>Număr de pagini</th>
+					<th>Limba</th>
+					<th>Editura</th>
+					<th>Localitate</th>
+					<th>ISBN</th>
+					<th>Acțiuni</th>
+				</tr>
+			{% for book in data['books'] %}
+			<tr>
+				<td>{{ book.title }}</td>
+				<td><a href="/books/search?{{ {'q': book.author, 'acc': '1'} | url_encode }}">{{ book.author }}</a></td>
+				<td>
+					{% if book.pub_year == "" %}
+							<span style="color: red">(lipsă)</span>
+					{% else %}
+							<a href="/books/search?{{ {'q': book.pub_year, 'acc': '1'} | url_encode }}">{{ book.pub_year }}</a>
+					{% endif %}
+				</td>
+				<td>
+					{{ book.num_of_pages }}
+				</td>
+				<td>
+					<a href="/books/search?{{ {'q': book.lang, 'acc': '1'} | url_encode }}">{{ book.lang }}</a>
+				</td>
+				<td>
+					{% if book.publisher == "" %}
+						<span style="color: red">(lipsă)</span>
+					{% else %}
+						<a href="/books/search?{{ {'q': book.publisher, 'acc': '1'} | url_encode }}">{{ book.publisher }}</a>
+					{% endif %}
+				</td>
+				<td>
+					{% if book.locality == "" %}
+						<span style="color: red">(lipsă)</span>
+					{% else %}
+						<a href="/books/search?{{ {'q': book.locality, 'acc': '1'} | url_encode }}">{{ book.locality }}</a>
+					{% endif %}
+				</td>
+				<td>
+					{% if book.isbn == "" %}
+						<span style="color: red">(lipsă)</span>
+					{% else %}
+						{{ book.isbn }}
+					{% endif %}
+				</td>
+
+				<td>
+					<a href="/admin/books/edit/{{ book.id }}">Editare</a><br>
+					<a href="/admin/books/delete/{{ book.id }}">Ștergere</a><br>
+				</td>
+
+			</tr>
+			{% endfor %}
+			</table>
+		{% endif %}
+
+ #}
+	
+{% endblock %}

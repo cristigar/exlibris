@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Limbi{% endblock %}
+
+{% block body %}
+
+	<h1>Limbi</h1>
+
+	<ul>
+		
+		{% for lang in langs %}
+		<li>
+			<p>
+				<a href="in/{{ lang.id }}" title="Dați clic pentru a vedea cărțile în limba „{{ lang.name }}”">{{ lang.name | capitalize }}</a>
+				- {{ lang.cnt }}</p>
+		</li>
+
+		{% endfor %}
+
+	</ul>
+	
+{% endblock %}

@@ -1,0 +1,609 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/*! HTML5 Boilerplate v5.3.0 | MIT License | https://html5boilerplate.com/ */
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+::-moz-selection {
+  background: rgba(185, 18, 27, 0.6);
+  text-shadow: none;
+}
+
+::selection {
+  background: rgba(185, 18, 27, 0.6);
+  text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+textarea {
+  resize: vertical;
+}
+
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+/*
+ * Hide visually and from screen readers
+ */
+.hidden {
+  display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+.invisible {
+  visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+*,
+*:after,
+*:before {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.btn, .delete,
+.delete:hover, .edit,
+.edit:hover, #submit {
+  color: white;
+  background: #646464;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.075s ease-in-out;
+}
+.btn:hover, .delete:hover, .edit:hover, #submit:hover {
+  box-shadow: 0 0 10px 2px #dddddd;
+}
+.btn:active, .delete:active, .edit:active, #submit:active {
+  box-shadow: inset 0 0 1em rgba(70, 70, 70, 0.5);
+}
+
+.delete,
+.delete:hover {
+  background: #c0392b;
+}
+
+.edit,
+.edit:hover {
+  background: #27ae60;
+}
+
+.no-record {
+  color: #b9121b;
+  font-style: italic;
+}
+
+.no-data {
+  font-style: italic;
+}
+
+.invalid-data {
+  color: #b9121b;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+}
+
+input, html, #searchInput,
+button {
+  font: 400 1em/1.4 "Noto Sans", sans-serif;
+}
+
+html {
+  color: #222222;
+  background: #fcfaeb;
+}
+
+body {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  align-items: center;
+}
+body a {
+  color: #4c1b1b;
+  text-decoration: none;
+  transition: all 0.075s ease-in-out;
+  border-bottom: 1px dotted #4c1b1b;
+}
+body a:hover {
+  color: #b9121b;
+}
+
+.content-container {
+  margin: 1em 0 auto;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+.content-container form {
+  text-align: center;
+}
+.content-container > *:not(:last-child) {
+  margin-bottom: 2em;
+}
+
+#mainNav {
+  background: #fafafa;
+  border: 1px solid #bebebe;
+  box-shadow: 0 0 10px 2px #dddddd;
+  margin-bottom: 2em;
+}
+#mainNav ul {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+#mainNav a {
+  text-align: center;
+  display: block;
+  padding: 1em;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: none;
+}
+#mainNav a:hover {
+  background: rgba(0, 0, 0, 0.01);
+}
+
+#logo a {
+  background: #b9121b;
+  color: #fafafa;
+  font: 700 1.8em/1 "Noto Serif", serif;
+}
+#logo a:hover {
+  background: #b9121b;
+}
+
+form input:not([type=submit]), form html:not([type=submit]), form #searchInput:not([type=submit]) {
+  border: 1px solid #bebebe;
+  padding: .4em;
+  outline: none;
+  transition: all 0.075s ease-in-out;
+}
+form input:not([type=submit]):focus, form html:not([type=submit]):focus, form #searchInput:not([type=submit]):focus {
+  border-color: #4c1b1b;
+  box-shadow: 0 0 10px 2px #dddddd;
+}
+
+#searchInput {
+  width: 80%;
+}
+#searchInput + i {
+  transform: translateX(-2em);
+}
+
+#pageNav {
+  background: #bebebe;
+}
+#pageNav ul {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+#pageNav li a {
+  display: block;
+  text-align: center;
+  font-weight: 700;
+  line-height: 3;
+  color: #464646;
+  text-decoration: none;
+  border-bottom: none;
+}
+#pageNav li a:hover {
+  color: white;
+  background: #464646;
+}
+
+#pageFooter {
+  -webkit-align-self: stretch;
+  align-self: stretch;
+  background: #222222;
+  color: #fcfaeb;
+  padding: 1em 0;
+  margin-top: 2em;
+  text-align: center;
+}
+#pageFooter a {
+  color: #fcfaeb;
+  font-weight: 700;
+  border: none;
+}
+#pageFooter a:hover {
+  color: #b9121b;
+}
+
+main {
+  margin-bottom: auto;
+  padding: 0 5px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  /**
+   * Targeting pages with lists: authors, langs, publishers and localities
+   */
+}
+main > h1 {
+  font: 700 2em/1.2 "Noto Serif", serif;
+  margin-bottom: .5em;
+}
+main > ul {
+  list-style: decimal;
+  padding-left: 2em;
+}
+main > ul li {
+  padding: .4em 0;
+}
+main > form {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+main > form div {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: stretch;
+  align-items: stretch;
+}
+main > form label {
+  text-align: left;
+  margin-top: .4em;
+}
+main > form input:not([type=submit]), main > form html:not([type=submit]), main > form #searchInput:not([type=submit]) {
+  width: 100%;
+}
+
+#submit {
+  margin: 1em 0 0 auto;
+  padding: .6em 1.2em;
+  background: #4c1b1b;
+  border: 1px solid #4c1b1b;
+}
+#submit:active {
+  background: #b9121b;
+}
+
+.book {
+  padding: 2em 0;
+}
+.book:not(:last-child) {
+  border-bottom: 1px dashed #4c1b1b;
+}
+.book .title {
+  font: 700 1.6em/1.2 "Noto Serif", serif;
+  margin-bottom: .2em;
+}
+.book a {
+  border-bottom: 1px dotted #4c1b1b;
+}
+
+.book-info {
+  margin-top: 1em;
+}
+.book-info > div {
+  padding: .1em 0;
+}
+
+.book-actions {
+  padding-top: 1em;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+}
+.book-actions a {
+  display: block;
+  padding: .4em .8em;
+  border: 0;
+}
+.book-actions a:not(:last-child) {
+  margin-right: .5em;
+}
+
+/***==============================================
+	Media screen > 40em
+    ==========================================***/
+@media only screen and (min-width: 40em) {
+  #mainNav ul {
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: stretch;
+    align-items: stretch;
+  }
+  #mainNav li {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: stretch;
+    align-items: stretch;
+  }
+  #mainNav li:nth-child(2) {
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+  }
+  #mainNav a {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+  }
+
+  #pageNav ul {
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+  }
+  #pageNav li {
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex: 1;
+    flex: 1;
+  }
+  #pageNav li a {
+    -webkit-flex: 1;
+    flex: 1;
+  }
+
+  main {
+    padding: 0 1em;
+  }
+  main form {
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+  }
+  main form div {
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    align-items: center;
+    width: 100%;
+    margin-top: .8em;
+  }
+  main form input[type=text], main form html[type=text], main form [type=text]#searchInput {
+    -webkit-flex-basis: 80%;
+    flex-basis: 80%;
+  }
+  main form input[type=number], main form html[type=number], main form [type=number]#searchInput {
+    -webkit-flex-basis: 40%;
+    flex-basis: 40%;
+  }
+
+  .book-info {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  .book-info > div {
+    -webkit-flex-basis: 50%;
+    flex-basis: 50%;
+  }
+}
+/***==============================================
+	Media screen > 60em
+    ==========================================***/
+@media only screen and (min-width: 60em) {
+  .content-container {
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    max-width: 70em;
+  }
+  .content-container header {
+    -webkit-flex-basis: 100%;
+    flex-basis: 100%;
+  }
+
+  #pageNav {
+    -webkit-flex-basis: 25%;
+    flex-basis: 25%;
+    -webkit-align-self: flex-start;
+    align-self: flex-start;
+  }
+  #pageNav ul li {
+    -webkit-flex-basis: 100%;
+    flex-basis: 100%;
+  }
+
+  main {
+    -webkit-flex-basis: 75%;
+    flex-basis: 75%;
+    padding-left: 2em;
+  }
+
+  #logo {
+    -webkit-flex-basis: 25%;
+    flex-basis: 25%;
+  }
+  #logo a {
+    -webkit-justify-content: center;
+    justify-content: center;
+  }
+}

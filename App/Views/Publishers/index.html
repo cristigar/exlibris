@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Edituri{% endblock %}
+
+{% block body %}
+
+	<h1>Edituri</h1>
+
+	<ul>
+		
+		{% for publisher in publishers %}
+		<li>
+			<p>
+			<a href="by/{{ publisher.id }}" title="Dați clic pentru a vedea cărțile editate de „{{ publisher.name }}”">
+				{% if publisher.name %}
+					{{ publisher.name }}
+				{% else %}
+					<span class="no-record">(lipsește)</span>
+				{% endif %}
+			</a>
+				- {{ publisher.cnt }}</p>
+			</p>
+		</li>
+
+		{% endfor %}
+
+	</ul>
+	
+{% endblock %}

@@ -1,0 +1,11 @@
+# Redirect to 'public'
+# replace 'exlibris.local' with your hostname
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^exlibris.local$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.exlibris.local$
+RewriteCond %{REQUEST_URI} !public/
+RewriteRule (.*) /public/$1 [L]
+
+
+# Set the server charset
+AddDefaultCharset utf-8

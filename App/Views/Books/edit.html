@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block title %}Editare carte{% endblock %}
+
+{% block body %}
+
+	<h1>Editare carte</h1>
+
+	{% if data['message'] is defined %}
+		<p class="invalid-data">{{ data['message'] }}</p>
+	{% endif %}
+
+	{% if data['post'] is defined %}
+		{% set book = 'post' %}
+	{% else %}
+		{% set book = 'book' %}
+	{% endif %}
+
+	<form action="/admin/books/edit/{{ data[book]['id'] }}" method="post">
+		
+		<div>
+			<label for="title">Titlu</label>
+			<input type="text" id="title" name="title" required value="{{ data[book]['title'] }}">
+		</div>
+
+{# 
+		<label for="title">
+			Titlu
+			<input type="text" id="title" name="title" required value="{{ data[book]['title'] }}">
+		</label>
+ #}
+
+
+		
+		<div>
+			<label for="author">Autor</label>
+			<input type="text" id="author" name="author" list="listOfAuthors" required value="{{ data[book]['author'] }}">
+		</div>
+
+		<div>
+			<label for="publisher">Editură</label>
+			<input type="text" id="publisher" name="publisher" list="listOfPublishers" value="{{ data[book]['publisher'] }}">
+		</div>
+
+		<div>
+			<label for="lang">Limbă</label>
+			<input type="text" id="lang" name="lang" list="listOfLangs" required value="{{ data[book]['lang'] }}">
+		</div>
+
+		<div>
+			<label for="numOfPages">Nr. de pagini</label>
+			<input type="number" min="0" step="1" id="numOfPages" name="numOfPages" required value="{{ data[book]['numOfPages'] }}">
+		</div>
+
+		<div>
+			<label for="pubYear">An</label>
+			<input type="number" min="0" max="{{ "now"|date("Y") }}" step="1" id="pubYear" name="pubYear" value="{{ data[book]['pubYear'] }}">
+		</div>
+		
+		<div>
+			<label for="locality">Localitate</label>
+			<input type="text" id="locality" name="locality" list="listOfLocalities" value="{{ data[book]['locality'] }}">
+		</div>
+		
+		<div>
+			<label for="isbn">ISBN</label>
+			<input type="text" id="isbn" name="isbn" autocomplete="false" pattern="^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$" placeholder="13 sau 10 cifre" title="de exemplu, „978-3-16-148410-0” (13 cifre) sau „5-372-01498-9” (10 cifre)" value="{{ data[book]['isbn'] }}">
+		</div>
+		
+		<input type="hidden" value="{{ data[book]['id'] }}" name="id">
+		<input type="submit" name="submit" id="submit" value="Editare">
+
+
+		<datalist id="listOfAuthors">
+			{% for author in data['authors'] %}
+				<option value="{{ author }}">
+			{% endfor %}
+		</datalist>
+
+		<datalist id="listOfLangs">
+			{% for lang in data['langs'] %}
+				<option value="{{ lang }}">
+			{% endfor %}
+		</datalist>
+
+		<datalist id="listOfPublishers">
+			{% for publisher in data['publishers'] %}
+				<option value="{{ publisher }}">
+			{% endfor %}
+		</datalist>
+
+		<datalist id="listOfLocalities">
+			{% for locality in data['localities'] %}
+				<option value="{{ locality }}">
+			{% endfor %}
+		</datalist>
+
+	</form>
+	
+{% endblock %}
